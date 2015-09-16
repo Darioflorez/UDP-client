@@ -40,17 +40,19 @@ public class ClientThread extends Thread{
                     break;
                 }
                 String msg = getMessage();
-                if(msg != null){
+                  if(msg != null){
                     if(msg.contains("Timeout")){
                         System.err.println(msg);
                         closeConnection();
                         break;
                     }
-                    if(msg.equalsIgnoreCase("ok")){
+                    else if(msg.equalsIgnoreCase("ok")){
                         setState("start");
                         displayMessage("Connected!");
                     }else if(msg.equalsIgnoreCase("ready")){
                         setState("a number");
+                    }else if (msg.equalsIgnoreCase("correct!")) {
+                        setState("start");
                     }
                     displayMessage(msg);
                     System.out.print("> insert [" + state + "]: ");
