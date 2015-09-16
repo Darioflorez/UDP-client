@@ -42,8 +42,9 @@ public class ClientThread extends Thread{
                 String msg = getMessage();
                 if(msg != null){
                     if(msg.contains("Timeout")){
-                        getMessage();
-                        setState("hello");
+                        System.err.println(msg);
+                        closeConnection();
+                        break;
                     }
                     if(msg.equalsIgnoreCase("ok")){
                         setState("start");

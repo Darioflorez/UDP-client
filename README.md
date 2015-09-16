@@ -1,2 +1,2 @@
-# UDPServer
-This is an UDP server
+# UDP client
+This is an UDP client
