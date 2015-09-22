@@ -13,17 +13,16 @@ import java.util.Scanner;
 public class ClientThread extends Thread{
     private DatagramSocket socket = null;
     private InetAddress hostname;
-    private int port = 6478;
-    //private int port = 1337;
+    private int port; //6478
     private boolean active;
     private String state;
 
-    public ClientThread()throws IOException{
+    public ClientThread(String[] args)throws IOException{
         active = false;
         socket = new DatagramSocket();
         setState("hello");
-        //hostname = InetAddress.getByName("130.242.47.93");
-        hostname = InetAddress.getByName("127.0.0.1");
+        hostname = InetAddress.getByName(args[0]);
+        port = Integer.parseInt(args[1]);
     }
     public void run(){
         System.out.println("Client is ready!");
@@ -65,6 +64,7 @@ public class ClientThread extends Thread{
 
         }
         scanner.close();
+        System.out.println("Client closed!!!");
     }
 
     protected void setState(String s){
